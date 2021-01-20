@@ -57,7 +57,7 @@ app.get("/keyboards", (req, res) => routerFunc(req, res));
 app.get("/keycaps", (req, res) => routerFunc(req, res));
 app.get("/switches", (req, res) => routerFunc(req, res));
 
-app.get("/", (req, res) => {res.json(indexPage);})
+app.get("/", (req, res) => {res.redirect("https://mechgroupbuys.com/gb-data");})
 
 app.get("/404", (req, res) => {res.json(errorPage);})
 
