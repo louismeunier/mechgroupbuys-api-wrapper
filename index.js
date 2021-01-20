@@ -7,7 +7,6 @@ const PORT = process.env.PORT || 5000;
 const BASE_URL = "https://mechgroupbuys.com/gb-data";
 
 const errorPage = require("./public/404.json"); 
-const indexPage = require("./public/index.json");
 
 function parseDate(date) {
 	var month=0
