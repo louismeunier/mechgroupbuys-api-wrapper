@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 5000;
 const BASE_URL = "https://mechgroupbuys.com/gb-data";
 
 const errorPage = require("./public/404.json"); 
+const indexPage = require("./public/index.json");
 
 function parseDate(date) {
 	var month=0
@@ -56,7 +57,7 @@ app.get("/keyboards", (req, res) => routerFunc(req, res));
 app.get("/keycaps", (req, res) => routerFunc(req, res));
 app.get("/switches", (req, res) => routerFunc(req, res));
 
-app.get("/", (req, res) => {res.redirect("https://mechgroupbuys.com/gb-data");})
+app.get("/", (req, res) => {res.json(indexPage);})
 
 app.get("/404", (req, res) => {res.json(errorPage);})
 
