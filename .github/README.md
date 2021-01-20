@@ -4,7 +4,7 @@ This is a *updated* wrapper of https://mechgroupbuys.com, programmed to be far m
 
 *I am not associated with www.mechgroupbuys.com AT ALL. If you would like me to take down this API let me know.*
 
-##use 
+## use 
  `GET https://mechgroupbuyswrapper.herokuapp.com/:type?status=:status`
 
 
