@@ -14,12 +14,17 @@ function parseDate(date) {
 	var month=0
 		day=0
 		year=0;
-	if (date.split("/").length-1==1) [month,year] = date.split["/"]
-	else [month,day,year] = date.split("/");
-	month = parseInt(month)-1;
-	if (parseInt(year)<2000){year = parseInt(year)+2000;}
-	var dateObj = new Date(year, month, day);
-	return dateObj;
+		try {
+			if (date.split("/").length-1==1) [month,year] = date.split["/"]
+			else [month,day,year] = date.split("/");
+			month = parseInt(month)-1;
+			if (parseInt(year)<2000){year = parseInt(year)+2000;}
+			var dateObj = new Date(year, month, day);
+			return dateObj;
+		} catch(err) {
+			return "";
+		}
+	
 }
 
 function routerFunc (req, res) {
