@@ -10,6 +10,7 @@ const errorPage = require("./public/404.json");
 
 
 function parseDate(date) {
+	if (!date || date===undefined) return "";
 	var month=0
 		day=0
 		year=0;
