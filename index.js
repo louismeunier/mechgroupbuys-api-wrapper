@@ -1,10 +1,11 @@
 const express = require("express");
 const axios = require("axios");
+const https = require("https");
 const app = express();
 
 const PORT = process.env.PORT || 5000;
 
-const BASE_URL = "https://mechgroupbuys.com/gb-data";
+const BASE_URL = "http://mechgroupbuys.com/gb-data";
 
 const errorPage = require("./public/404.json"); 
 
@@ -36,7 +37,11 @@ function routerFunc (req, res) {
 	
 	//invalid status code error
 	if (validStatus.indexOf(status)==-1 || status===undefined) {res.json({"error":{"invalid_status":`${status} is not a valid status, must be one ["live","upcoming","ic","ended"]`}}); return};
-	axios.get(BASE_URL)
+	axios.get(BASE_URL, {
+		httpsAgent: new https.Agent({  
+			rejectUnauthorized: false
+		})
+	})
 		.then((response) => {
 			const today = new Date();
 			
@@ -63,7 +68,7 @@ app.get("/keyboards", (req, res) => routerFunc(req, res));
 app.get("/keycaps", (req, res) => routerFunc(req, res));
 app.get("/switches", (req, res) => routerFunc(req, res));
 
-app.get("/", (req, res) => {res.redirect("https://mechgroupbuys.com/gb-data");})
+app.get("/", (req, res) => {res.redirect("http://mechgroupbuys.com/gb-data");})
 
 app.get("/404", (req, res) => {res.json(errorPage);})
 
